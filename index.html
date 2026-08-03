@@ -4,263 +4,174 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>前端86个项目练习</title>
+    <meta name="description" content="86 个前端交互实验组成的数字宇宙探索档案。">
+    <meta name="theme-color" content="#03060b">
+    <title>数字宇宙探索档案 · Frontend 86</title>
+    <script>document.documentElement.classList.add('js');</script>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <div class="container">
-        <!-- 自定义光标 -->
-        <div class="target-cursor-wrapper" id="cursor">
-            <div class="target-cursor-dot"></div>
-            <div class="target-cursor-corner corner-tl"></div>
-            <div class="target-cursor-corner corner-tr"></div>
-            <div class="target-cursor-corner corner-br"></div>
-            <div class="target-cursor-corner corner-bl"></div>
-        </div>
+    <div class="reading-progress" aria-hidden="true"><span id="readingProgress"></span></div>
+    <canvas class="starfield" id="starfield" aria-hidden="true"></canvas>
+    <div class="cosmic-noise" aria-hidden="true"></div>
+    <div class="signal-cursor" id="cursor" aria-hidden="true"><span></span></div>
 
-        <header>
-            <h1>前端86个项目练习</h1>
-            <p class="subtitle">系统化的前端交互效果练习项目集---笔记本观看效果更佳</p>
-            <div class="stats">
-                <div class="stat-item">
-                    <div class="stat-number">86</div>
-                    <div class="stat-label">总项目数</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">0</div>
-                    <div class="stat-label">已完成</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">0%</div>
-                    <div class="stat-label">完成率</div>
-                </div>
+    <div class="site-shell">
+        <header class="hero" id="top">
+            <nav class="masthead" aria-label="主导航">
+                <a class="brand cursor-target" href="#top" aria-label="返回首页">FL / 86</a>
+                <p class="masthead-status"><span class="live-dot"></span>Archive online</p>
+                <a class="archive-jump cursor-target" href="#projectArchive">进入档案 <span>↘</span></a>
+            </nav>
+
+            <div class="hero-scene" aria-hidden="true">
+                <div class="orbit orbit-one"><span></span></div>
+                <div class="orbit orbit-two"><span></span></div>
+                <div class="planet" id="heroPlanet"><span class="planet-glow"></span></div>
+                <div class="coordinate coordinate-a">RA 22H 41M</div>
+                <div class="coordinate coordinate-b">DEC +17° 32′</div>
+            </div>
+
+            <div class="hero-copy" id="heroCopy">
+                <p class="eyebrow">Frontend expedition · 01—86</p>
+                <h1><span>数字宇宙</span><span class="title-indent">探索档案</span></h1>
+                <p class="hero-intro">持续记录 86 个前端交互实验。每一次动效、每一种界面，都是驶向未知体验的一次短途航行。</p>
+                <a class="scroll-cue cursor-target" href="#projectArchive"><span>Scroll to explore</span><i></i></a>
             </div>
         </header>
 
-        <!-- 分类Tab栏 -->
-        <nav class="category-tabs" id="categoryTabs">
-            <button class="category-tab active" data-category="all">
-                全部项目<span class="count">22</span>
-            </button>
-            <button class="category-tab" data-category="loading">
-                加载动画<span class="count">6</span>
-            </button>
-            <button class="category-tab" data-category="navigation">
-                导航效果<span class="count">4</span>
-            </button>
-            <button class="category-tab" data-category="visual">
-                视觉效果<span class="count">5</span>
-            </button>
-            <button class="category-tab" data-category="media">
-                媒体组件<span class="count">2</span>
-            </button>
-            <button class="category-tab" data-category="form">
-                表单组件<span class="count">1</span>
-            </button>
-            <button class="category-tab" data-category="other">
-                其他<span class="count">4</span>
-            </button>
-        </nav>
+        <section class="mission-summary reveal-block" aria-label="项目进度">
+            <div class="summary-intro">
+                <span class="section-index">LOG / 001</span>
+                <p>探索并记录浏览器中可能发生的视觉与交互现象。</p>
+            </div>
+            <dl class="stats">
+                <div><dt>计划任务</dt><dd id="totalProjects">86</dd></div>
+                <div><dt>已记录</dt><dd id="completedProjects">0</dd></div>
+                <div><dt>完成率</dt><dd id="completionRate">0%</dd></div>
+            </dl>
+        </section>
 
-        <main class="projects-grid">
-            <!-- 项目卡片示例 -->
-            <div class="project-card" data-href="projects/01-parallax-scrolling/" data-category="visual">
-                <span class="project-number">01</span>
-                <h2 class="project-title">视差滚动效果</h2>
-                <p class="project-tech">CSS3, JavaScript, 视差滚动</p>
-                <span class="project-status status-done">已完成</span>
+        <main class="archive" id="projectArchive">
+            <div class="archive-heading reveal-block">
+                <div>
+                    <p class="eyebrow">Observation records</p>
+                    <h2>项目档案</h2>
+                </div>
+                <p>选择观测频段，查看不同类型的交互实验。</p>
             </div>
 
-            <div class="project-card" data-href="projects/02-fullscreen-video/" data-category="media">
-                <span class="project-number">02</span>
-                <h2 class="project-title">全屏视频背景</h2>
-                <p class="project-tech">HTML5 Video, CSS3</p>
-                <span class="project-status status-done">已完成</span>
+            <nav class="category-tabs" id="categoryTabs" aria-label="项目分类">
+                <button class="category-tab active cursor-target" type="button" data-category="all" aria-pressed="true">全部 <span class="count">26</span></button>
+                <button class="category-tab cursor-target" type="button" data-category="loading" aria-pressed="false">加载动画 <span class="count">0</span></button>
+                <button class="category-tab cursor-target" type="button" data-category="navigation" aria-pressed="false">导航效果 <span class="count">0</span></button>
+                <button class="category-tab cursor-target" type="button" data-category="visual" aria-pressed="false">视觉效果 <span class="count">0</span></button>
+                <button class="category-tab cursor-target" type="button" data-category="media" aria-pressed="false">媒体组件 <span class="count">0</span></button>
+                <button class="category-tab cursor-target" type="button" data-category="form" aria-pressed="false">表单组件 <span class="count">0</span></button>
+                <button class="category-tab cursor-target" type="button" data-category="other" aria-pressed="false">其他 <span class="count">0</span></button>
+            </nav>
+
+            <div class="archive-columns" aria-hidden="true">
+                <span>编号 / 项目</span><span>实验媒介</span><span>状态</span>
             </div>
 
-            <div class="project-card" data-href="projects/03-transform-effects/" data-category="other">
-                <span class="project-number">03</span>
-                <h2 class="project-title">滚动变换效果</h2>
-                <p class="project-tech">CSS3 Transform, JavaScript</p>
-                <span class="project-status status-skipped">已跳过</span>
+            <div class="projects-list" id="projectsList">
+                <a class="project-entry cursor-target" href="projects/01-parallax-scrolling/" data-category="visual" data-status="done">
+                    <span class="project-number">01</span><span class="project-heading"><strong>视差滚动效果</strong><small>Parallax scrolling</small></span><span class="project-tech">CSS3 · JavaScript · 视差滚动</span><span class="project-status status-done">已完成</span><span class="project-arrow" aria-hidden="true">↗</span>
+                </a>
+                <a class="project-entry cursor-target" href="projects/02-fullscreen-video/" data-category="media" data-status="done">
+                    <span class="project-number">02</span><span class="project-heading"><strong>全屏视频背景</strong><small>Fullscreen video</small></span><span class="project-tech">HTML5 Video · CSS3</span><span class="project-status status-done">已完成</span><span class="project-arrow" aria-hidden="true">↗</span>
+                </a>
+                <a class="project-entry cursor-target" href="projects/03-transform-effects/" data-category="other" data-status="skipped">
+                    <span class="project-number">03</span><span class="project-heading"><strong>滚动变换效果</strong><small>Scroll transform</small></span><span class="project-tech">CSS3 Transform · JavaScript</span><span class="project-status status-skipped">已跳过</span><span class="project-arrow" aria-hidden="true">↗</span>
+                </a>
+                <a class="project-entry cursor-target" href="projects/04-responsive-navigation/" data-category="navigation" data-status="skipped">
+                    <span class="project-number">04</span><span class="project-heading"><strong>全屏覆盖响应式导航</strong><small>Responsive navigation</small></span><span class="project-tech">CSS3 · JavaScript · 响应式设计</span><span class="project-status status-skipped">已跳过</span><span class="project-arrow" aria-hidden="true">↗</span>
+                </a>
+                <a class="project-entry cursor-target" href="projects/05-loading-bar-animation/" data-category="loading" data-status="done">
+                    <span class="project-number">05</span><span class="project-heading"><strong>加载条波浪动画</strong><small>Loading wave</small></span><span class="project-tech">CSS Animation · Flexbox</span><span class="project-status status-done">已完成</span><span class="project-arrow" aria-hidden="true">↗</span>
+                </a>
+                <a class="project-entry cursor-target" href="projects/06-social-media-navigation/" data-category="navigation" data-status="done">
+                    <span class="project-number">06</span><span class="project-heading"><strong>社交媒体悬停导航</strong><small>Social navigation</small></span><span class="project-tech">Pseudo-elements · Transform · Font Awesome</span><span class="project-status status-done">已完成</span><span class="project-arrow" aria-hidden="true">↗</span>
+                </a>
+                <a class="project-entry cursor-target" href="projects/07-icon-hover-effects/" data-category="navigation" data-status="done">
+                    <span class="project-number">07</span><span class="project-heading"><strong>图标悬停效果</strong><small>Icon hover</small></span><span class="project-tech">CSS Transform · Pseudo-elements</span><span class="project-status status-done">已完成</span><span class="project-arrow" aria-hidden="true">↗</span>
+                </a>
+                <a class="project-entry cursor-target" href="projects/08-transparent-text-effects/" data-category="visual" data-status="done">
+                    <span class="project-number">08</span><span class="project-heading"><strong>透明文字效果</strong><small>Transparent type</small></span><span class="project-tech">mix-blend-mode · text-shadow · Background</span><span class="project-status status-done">已完成</span><span class="project-arrow" aria-hidden="true">↗</span>
+                </a>
+                <a class="project-entry cursor-target" href="projects/09-split-image-hover/" data-category="visual" data-status="issue">
+                    <span class="project-number">09</span><span class="project-heading"><strong>悬停分裂图片</strong><small>Split image hover</small></span><span class="project-tech">Transform · Pseudo-elements · 3D Rotation</span><span class="project-status status-issue">略有瑕疵</span><span class="project-arrow" aria-hidden="true">↗</span>
+                </a>
+                <a class="project-entry cursor-target" href="projects/10-neon-light-effects/" data-category="visual" data-status="done">
+                    <span class="project-number">10</span><span class="project-heading"><strong>霓虹灯文字效果</strong><small>Neon typography</small></span><span class="project-tech">text-shadow · Filter · Blur · attr()</span><span class="project-status status-done">已完成</span><span class="project-arrow" aria-hidden="true">↗</span>
+                </a>
+                <a class="project-entry cursor-target" href="projects/11-login-form/" data-category="form" data-status="issue">
+                    <span class="project-number">11</span><span class="project-heading"><strong>登录表单</strong><small>Login form</small></span><span class="project-tech">CSS Float · Box-shadow · Form styling</span><span class="project-status status-issue">不太完善</span><span class="project-arrow" aria-hidden="true">↗</span>
+                </a>
+                <a class="project-entry cursor-target" href="projects/12-bubble-animation/" data-category="loading" data-status="done">
+                    <span class="project-number">12</span><span class="project-heading"><strong>气泡背景动画</strong><small>Bubble field</small></span><span class="project-tech">CSS Animation · Keyframes · Transform</span><span class="project-status status-done">已完成</span><span class="project-arrow" aria-hidden="true">↗</span>
+                </a>
+                <a class="project-entry cursor-target" href="projects/13-3d-model-showcase/" data-category="media" data-status="done">
+                    <span class="project-number">13</span><span class="project-heading"><strong>3D 模型展示页</strong><small>3D model showcase</small></span><span class="project-tech">Sketchfab iframe · Responsive layout</span><span class="project-status status-done">已完成</span><span class="project-arrow" aria-hidden="true">↗</span>
+                </a>
+                <a class="project-entry cursor-target" href="projects/14-ripple-loader/" data-category="loading" data-status="done">
+                    <span class="project-number">14</span><span class="project-heading"><strong>波纹加载动画</strong><small>Ripple loader</small></span><span class="project-tech">CSS Animation · SVG · Ripple effect</span><span class="project-status status-done">已完成</span><span class="project-arrow" aria-hidden="true">↗</span>
+                </a>
+                <a class="project-entry cursor-target" href="projects/15-constellation-loader/" data-category="loading" data-status="done">
+                    <span class="project-number">15</span><span class="project-heading"><strong>星座连线 Loading</strong><small>Constellation loader</small></span><span class="project-tech">Canvas 2D · JavaScript · Animation</span><span class="project-status status-done">已完成</span><span class="project-arrow" aria-hidden="true">↗</span>
+                </a>
+                <a class="project-entry cursor-target" href="projects/16-target-cursor/" data-category="visual" data-status="done">
+                    <span class="project-number">16</span><span class="project-heading"><strong>目标光标效果</strong><small>Target cursor</small></span><span class="project-tech">GSAP · JavaScript · mix-blend-mode</span><span class="project-status status-done">已完成</span><span class="project-arrow" aria-hidden="true">↗</span>
+                </a>
+                <a class="project-entry cursor-target" href="projects/17-project-showcase/" data-category="other" data-status="done">
+                    <span class="project-number">17</span><span class="project-heading"><strong>项目展示平台</strong><small>Project showcase</small></span><span class="project-tech">CSS Grid · Flexbox · FLIP Animation</span><span class="project-status status-done">已完成</span><span class="project-arrow" aria-hidden="true">↗</span>
+                </a>
+                <a class="project-entry cursor-target" href="projects/18-lighthouse-beacon/" data-category="visual" data-status="done">
+                    <span class="project-number">18</span><span class="project-heading"><strong>灯塔光束效果</strong><small>Lighthouse beacon</small></span><span class="project-tech">conic-gradient · CSS Animation</span><span class="project-status status-done">已完成</span><span class="project-arrow" aria-hidden="true">↗</span>
+                </a>
+                <a class="project-entry cursor-target" href="projects/19-font-showcase/" data-category="other" data-status="done">
+                    <span class="project-number">19</span><span class="project-heading"><strong>字体展示平台</strong><small>Type specimen</small></span><span class="project-tech">Google Fonts · Modal · JavaScript</span><span class="project-status status-done">已完成</span><span class="project-arrow" aria-hidden="true">↗</span>
+                </a>
+                <a class="project-entry cursor-target" href="projects/20-notice-board/" data-category="other" data-status="done">
+                    <span class="project-number">20</span><span class="project-heading"><strong>告示板</strong><small>Notice board</small></span><span class="project-tech">CSS Gradients · Google Fonts · Grid</span><span class="project-status status-done">已完成</span><span class="project-arrow" aria-hidden="true">↗</span>
+                </a>
+                <a class="project-entry cursor-target" href="projects/21-square-loader/" data-category="loading" data-status="done">
+                    <span class="project-number">21</span><span class="project-heading"><strong>方形变换 Loading</strong><small>Square transform</small></span><span class="project-tech">CSS Animation · Keyframes · Transform</span><span class="project-status status-done">已完成</span><span class="project-arrow" aria-hidden="true">↗</span>
+                </a>
+                <a class="project-entry cursor-target" href="projects/22-menu-transition/" data-category="navigation" data-status="done">
+                    <span class="project-number">22</span><span class="project-heading"><strong>菜单过渡动画</strong><small>Menu transition</small></span><span class="project-tech">Font Awesome · CSS Transition · JavaScript</span><span class="project-status status-done">已完成</span><span class="project-arrow" aria-hidden="true">↗</span>
+                </a>
+                <a class="project-entry cursor-target" href="projects/23-social-icons/" data-category="other" data-status="done">
+                    <span class="project-number">23</span><span class="project-heading"><strong>社交图标动画</strong><small>Social icons</small></span><span class="project-tech">Font Awesome · SVG · CSS Animation</span><span class="project-status status-done">已完成</span><span class="project-arrow" aria-hidden="true">↗</span>
+                </a>
+                <a class="project-entry cursor-target" href="projects/24-square-loader/" data-category="loading" data-status="done">
+                    <span class="project-number">24</span><span class="project-heading"><strong>方形路径加载动画</strong><small>Square path loader</small></span><span class="project-tech">CSS Animation · Keyframes · Transform</span><span class="project-status status-done">已完成</span><span class="project-arrow" aria-hidden="true">↗</span>
+                </a>
+                <a class="project-entry cursor-target" href="projects/25-starry-cosmos/" data-category="visual" data-status="done">
+                    <span class="project-number">25</span><span class="project-heading"><strong>星空宇宙背景</strong><small>Starry cosmos</small></span><span class="project-tech">Canvas · Particle System · Gradient</span><span class="project-status status-done">已完成</span><span class="project-arrow" aria-hidden="true">↗</span>
+                </a>
+                <a class="project-entry cursor-target" href="projects/26-infinite-photo-scroll/" data-category="media" data-status="done">
+                    <span class="project-number">26</span><span class="project-heading"><strong>图片无限滑动</strong><small>Infinite photo scroll</small></span><span class="project-tech">GSAP · JavaScript · 无限滚动</span><span class="project-status status-done">已完成</span><span class="project-arrow" aria-hidden="true">↗</span>
+                </a>
             </div>
 
-            <div class="project-card" data-href="projects/04-responsive-navigation/" data-category="navigation">
-                <span class="project-number">04</span>
-                <h2 class="project-title">全屏覆盖响应式导航</h2>
-                <p class="project-tech">CSS3, JavaScript, 响应式设计</p>
-                <span class="project-status status-skipped">已跳过</span>
-            </div>
-
-            <div class="project-card" data-href="projects/05-loading-bar-animation/" data-category="loading">
-                <span class="project-number">05</span>
-                <h2 class="project-title">加载条波浪动画</h2>
-                <p class="project-tech">CSS Animation, Flexbox</p>
-                <span class="project-status status-done">已完成</span>
-            </div>
-
-            <div class="project-card" data-href="projects/06-social-media-navigation/" data-category="navigation">
-                <span class="project-number">06</span>
-                <h2 class="project-title">社交媒体悬停导航</h2>
-                <p class="project-tech">CSS Pseudo-elements, Transform, Font Awesome</p>
-                <span class="project-status status-done">已完成</span>
-            </div>
-
-            <div class="project-card" data-href="projects/07-icon-hover-effects/" data-category="navigation">
-                <span class="project-number">07</span>
-                <h2 class="project-title">图标悬停效果</h2>
-                <p class="project-tech">CSS Transform, Pseudo-elements, Font Awesome</p>
-                <span class="project-status status-done">已完成</span>
-            </div>
-
-            <div class="project-card" data-href="projects/08-transparent-text-effects/" data-category="visual">
-                <span class="project-number">08</span>
-                <h2 class="project-title">透明文字效果</h2>
-                <p class="project-tech">CSS mix-blend-mode, text-shadow, background</p>
-                <span class="project-status status-done">已完成</span>
-            </div>
-
-            <div class="project-card" data-href="projects/09-split-image-hover/" data-category="visual">
-                <span class="project-number">09</span>
-                <h2 class="project-title">悬停分裂图片</h2>
-                <p class="project-tech">CSS Transform, Pseudo-elements, 3D Rotation</p>
-                <span class="project-status status-issue">略有瑕疵</span>
-            </div>
-
-            <div class="project-card" data-href="projects/10-neon-light-effects/" data-category="visual">
-                <span class="project-number">10</span>
-                <h2 class="project-title">霓虹灯文字效果</h2>
-                <p class="project-tech">CSS text-shadow, filter, blur, attr()</p>
-                <span class="project-status status-done">已完成</span>
-            </div>
-
-            <div class="project-card" data-href="projects/11-login-form/" data-category="form">
-                <span class="project-number">11</span>
-                <h2 class="project-title">登录表单</h2>
-                <p class="project-tech">CSS Float, Box-shadow, Form Styling</p>
-                <span class="project-status status-issue">不太完善</span>
-            </div>
-
-            <div class="project-card" data-href="projects/12-bubble-animation/" data-category="loading">
-                <span class="project-number">12</span>
-                <h2 class="project-title">气泡背景动画</h2>
-                <p class="project-tech">CSS Animation, Keyframes, Transform</p>
-                <span class="project-status status-done">已完成</span>
-            </div>
-
-            <div class="project-card" data-href="projects/13-3d-model-showcase/" data-category="media">
-                <span class="project-number">13</span>
-                <h2 class="project-title">3D模型展示页</h2>
-                <p class="project-tech">Sketchfab iframe, Responsive Layout</p>
-                <span class="project-status status-done">已完成</span>
-            </div>
-
-            <div class="project-card" data-href="projects/14-ripple-loader/" data-category="loading">
-                <span class="project-number">14</span>
-                <h2 class="project-title">波纹加载动画</h2>
-                <p class="project-tech">CSS Animation, SVG, Ripple Effect</p>
-                <span class="project-status status-done">已完成</span>
-            </div>
-
-            <div class="project-card" data-href="projects/15-constellation-loader/" data-category="loading">
-                <span class="project-number">15</span>
-                <h2 class="project-title">星座连线Loading</h2>
-                <p class="project-tech">Canvas 2D, JavaScript, Animation</p>
-                <span class="project-status status-done">已完成</span>
-            </div>
-
-            <div class="project-card" data-href="projects/16-target-cursor/" data-category="visual">
-                <span class="project-number">16</span>
-                <h2 class="project-title">目标光标效果</h2>
-                <p class="project-tech">GSAP, JavaScript, mix-blend-mode</p>
-                <span class="project-status status-done">已完成</span>
-            </div>
-
-            <div class="project-card" data-href="projects/17-project-showcase/" data-category="other">
-                <span class="project-number">17</span>
-                <h2 class="project-title">项目展示平台</h2>
-                <p class="project-tech">CSS Grid, Flexbox, JavaScript, FLIP Animation</p>
-                <span class="project-status status-done">已完成</span>
-            </div>
-
-            <div class="project-card" data-href="projects/18-lighthouse-beacon/" data-category="visual">
-                <span class="project-number">18</span>
-                <h2 class="project-title">灯塔光束效果</h2>
-                <p class="project-tech">conic-gradient, CSS Animation, Keyframes</p>
-                <span class="project-status status-done">已完成</span>
-            </div>
-
-            <div class="project-card" data-href="projects/19-font-showcase/" data-category="other">
-                <span class="project-number">19</span>
-                <h2 class="project-title">字体展示平台</h2>
-                <p class="project-tech">Google Fonts, CSS font-family, Modal, JavaScript</p>
-                <span class="project-status status-done">已完成</span>
-            </div>
-
-            <div class="project-card" data-href="projects/20-notice-board/" data-category="other">
-                <span class="project-number">20</span>
-                <h2 class="project-title">告示板</h2>
-                <p class="project-tech">CSS Gradients, Google Fonts, Grid Layout</p>
-                <span class="project-status status-done">已完成</span>
-            </div>
-
-            <div class="project-card" data-href="projects/21-square-loader/" data-category="loading">
-                <span class="project-number">21</span>
-                <h2 class="project-title">方形变换Loading</h2>
-                <p class="project-tech">CSS Animation, Keyframes, Transform</p>
-                <span class="project-status status-done">已完成</span>
-            </div>
-
-            <div class="project-card" data-href="projects/22-menu-transition/" data-category="navigation">
-                <span class="project-number">22</span>
-                <h2 class="project-title">菜单过渡动画</h2>
-                <p class="project-tech">Font Awesome, CSS Transition, JavaScript</p>
-                <span class="project-status status-done">已完成</span>
-            </div>
-
-            <div class="project-card" data-href="projects/23-social-icons/" data-category="other">
-                <span class="project-number">23</span>
-                <h2 class="project-title">社交图标动画</h2>
-                <p class="project-tech">Font Awesome, SVG, CSS Animation</p>
-                <span class="project-status status-done">已完成</span>
-            </div>
-
-            <div class="project-card" data-href="projects/24-square-loader/" data-category="loading">
-                <span class="project-number">24</span>
-                <h2 class="project-title">方形路径加载动画</h2>
-                <p class="project-tech">CSS Animation, Keyframes, Transform</p>
-                <span class="project-status status-done">已完成</span>
-            </div>
-
-            <div class="project-card" data-href="projects/25-money-flow/" data-category="visual">
-                <span class="project-number">25</span>
-                <h2 class="project-title">美元数字流背景</h2>
-                <p class="project-tech">Canvas, Animation, Gradient</p>
-                <span class="project-status status-done">已完成</span>
-            </div>
-
-            <div class="project-card" data-href="projects/26-infinite-photo-scroll/" data-category="media">
-                <span class="project-number">26</span>
-                <h2 class="project-title">图片无限滑动</h2>
-                <p class="project-tech">GSAP, JavaScript, 无限滚动</p>
-                <span class="project-status status-done">已完成</span>
-            </div>
-
-            <!-- 分页控件 -->
-            <div class="pagination" id="pagination">
-                <button class="page-btn" id="prevBtn" disabled>‹ 上一页</button>
-                <span class="page-info">第 <span id="currentPage">1</span> 页 / 共 <span id="totalPages">2</span> 页</span>
-                <button class="page-btn" id="nextBtn">下一页 ›</button>
-            </div>
+            <p class="archive-empty" id="archiveEmpty" hidden>该观测频段暂无记录。</p>
+            <nav class="pagination" id="pagination" aria-label="项目分页">
+                <button class="page-btn cursor-target" id="prevBtn" type="button">← 上一航段</button>
+                <p><span id="currentPage">01</span> / <span id="totalPages">03</span></p>
+                <button class="page-btn cursor-target" id="nextBtn" type="button">下一航段 →</button>
+            </nav>
         </main>
 
-        <footer>
-            <p>使用 GitHub Pages 托管 | 持续更新中...</p>
+        <footer class="site-footer reveal-block">
+            <p class="eyebrow">Transmission continues</p>
+            <h2>探索仍在继续。</h2>
+            <div><span>© <span id="currentYear">2026</span> Frontend Lab</span><span>Hosted on GitHub Pages · <b id="footerRecorded">26</b> records</span></div>
         </footer>
     </div>
 
-    <!-- 引入GSAP -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="script.js"></script>
 </body>
