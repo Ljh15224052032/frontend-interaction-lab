@@ -36,4 +36,9 @@ test('script keeps behavior in focused initializers', () => {
     assert.match(js, /requestAnimationFrame/);
     assert.match(js, /IntersectionObserver/);
     assert.match(js, /prefers-reduced-motion/);
+    assert.match(js, /const\s+perPage\s*=\s*10/);
+    assert.match(js, /scrollIntoView/);
+    assert.match(js, /devicePixelRatio/);
+    assert.match(js, /visibilitychange/);
+    assert.match(js, /matchMedia\(['"]\(pointer:\s*coarse\)/);
 });
