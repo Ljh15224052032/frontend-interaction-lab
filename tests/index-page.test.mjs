@@ -31,6 +31,15 @@ test('filters expose pressed state and CSS supports reduced motion', () => {
     assert.match(css, /grid-template-columns:\s*var\(--archive-grid\)/);
 });
 
+test('headline and archive typography keep readable spacing and scale', () => {
+    assert.match(css, /\.hero h1\s*\{[^}]*line-height:\s*0\.94/s);
+    assert.match(css, /--archive-tab-size:\s*0\.78rem/);
+    assert.match(css, /--archive-label-size:\s*0\.66rem/);
+    assert.match(css, /--archive-number-size:\s*0\.78rem/);
+    assert.match(css, /--archive-detail-size:\s*0\.69rem/);
+    assert.match(css, /--archive-status-size:\s*0\.64rem/);
+});
+
 test('script keeps behavior in focused initializers', () => {
     for (const name of ['initArchive', 'initStarfield', 'initScrollScene', 'initReveals', 'initCursor']) {
         assert.match(js, new RegExp(`function\\s+${name}\\s*\\(`));
