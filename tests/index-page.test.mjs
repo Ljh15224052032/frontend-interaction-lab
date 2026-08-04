@@ -27,6 +27,8 @@ test('filters expose pressed state and CSS supports reduced motion', () => {
     assert.match(css, /prefers-reduced-motion:\s*reduce/);
     assert.match(css, /--color-signal:/);
     assert.match(css, /\.js\s+\.project-entry/);
+    assert.match(css, /--archive-grid:\s*4\.5rem\s+minmax/);
+    assert.match(css, /grid-template-columns:\s*var\(--archive-grid\)/);
 });
 
 test('script keeps behavior in focused initializers', () => {
