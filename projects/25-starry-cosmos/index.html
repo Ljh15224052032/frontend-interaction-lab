@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>项目25：星空宇宙背景</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <canvas id="cosmos"></canvas>
+
+    <!-- 左下角当前效果名称 -->
+    <div class="effect-label" id="effectLabel">深空星尘</div>
+
+    <!-- 右下角切换面板 -->
+    <div class="switch-panel">
+        <div class="panel-title">星空效果</div>
+        <div class="btn-group">
+            <button class="effect-btn active" type="button" data-effect="stardust">深空星尘</button>
+            <button class="effect-btn" type="button" data-effect="meteor">流星雨夜</button>
+            <button class="effect-btn" type="button" data-effect="nebula">星云漩涡</button>
+            <button class="effect-btn" type="button" data-effect="constellation">星座连线</button>
+            <button class="effect-btn" type="button" data-effect="warp">虫洞穿越</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
