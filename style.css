@@ -19,6 +19,11 @@
     --page-gutter: clamp(1.25rem, 4vw, 4.5rem);
     --max-width: 1440px;
     --archive-grid: 4.5rem minmax(12rem, 1.1fr) minmax(15rem, 0.92fr) 7rem 2.5rem;
+    --archive-tab-size: 0.78rem;
+    --archive-label-size: 0.66rem;
+    --archive-number-size: 0.78rem;
+    --archive-detail-size: 0.69rem;
+    --archive-status-size: 0.64rem;
     --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
     --duration-fast: 220ms;
     --duration-slow: 900ms;
@@ -439,7 +444,7 @@ html.has-custom-cursor button {
     font-size: clamp(4.6rem, 10.4vw, 10.2rem);
     font-weight: 500;
     letter-spacing: -0.075em;
-    line-height: 0.78;
+    line-height: 0.94;
 }
 
 .hero h1 span {
@@ -613,7 +618,7 @@ html.has-custom-cursor button {
     background: transparent;
     color: var(--color-muted);
     font-family: var(--font-data);
-    font-size: 0.66rem;
+    font-size: var(--archive-tab-size);
     letter-spacing: 0.1em;
     cursor: pointer;
     text-transform: uppercase;
@@ -662,7 +667,7 @@ html.has-custom-cursor button {
     border-top: 1px solid var(--color-line);
     color: var(--color-dim);
     font-family: var(--font-data);
-    font-size: 0.57rem;
+    font-size: var(--archive-label-size);
     letter-spacing: 0.12em;
     text-transform: uppercase;
 }
@@ -753,7 +758,7 @@ html.has-custom-cursor button {
 .project-number {
     color: var(--color-signal);
     font-family: var(--font-data);
-    font-size: 0.67rem;
+    font-size: var(--archive-number-size);
     letter-spacing: 0.14em;
     transition: letter-spacing var(--duration-fast) var(--ease-out);
 }
@@ -778,7 +783,7 @@ html.has-custom-cursor button {
 .project-heading small {
     color: var(--color-dim);
     font-family: var(--font-data);
-    font-size: 0.55rem;
+    font-size: var(--archive-label-size);
     letter-spacing: 0.13em;
     text-transform: uppercase;
 }
@@ -787,7 +792,7 @@ html.has-custom-cursor button {
     padding-right: 2rem;
     color: var(--color-muted);
     font-family: var(--font-data);
-    font-size: 0.61rem;
+    font-size: var(--archive-detail-size);
     letter-spacing: 0.035em;
     line-height: 1.7;
 }
@@ -798,7 +803,7 @@ html.has-custom-cursor button {
     border: 1px solid var(--color-line);
     color: var(--color-muted);
     font-family: var(--font-data);
-    font-size: 0.56rem;
+    font-size: var(--archive-status-size);
     letter-spacing: 0.08em;
     white-space: nowrap;
 }
@@ -1074,7 +1079,7 @@ html.has-custom-cursor button {
 
     .hero h1 {
         font-size: clamp(3.7rem, 20vw, 5.6rem);
-        line-height: 0.84;
+        line-height: 0.96;
     }
 
     .title-indent {
@@ -1144,7 +1149,7 @@ html.has-custom-cursor button {
 
     .project-status {
         padding: 0.3rem 0.38rem;
-        font-size: 0.49rem;
+        font-size: 0.58rem;
     }
 
     .pagination {
